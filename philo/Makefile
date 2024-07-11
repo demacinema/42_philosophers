@@ -9,16 +9,13 @@ SRC_DIR	=	./src
 OBJ_DIR	=	./obj
 
 FILES	=	main\
-			utility\
 			input_handling\
-			sleep\
-			routine\
-			doc_threats\
-
+			philo_status\
+			philo_utils_1\
+			philo_utils_2\
 
 SRC		=	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))
 OBJ		=	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
-
 
 all: $(NAME)
 

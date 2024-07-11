@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_handling.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: demacinema <demacinema@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/12 00:43:06 by demacinema        #+#    #+#             */
+/*   Updated: 2024/07/12 01:12:00 by demacinema       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../philo.h"
 
-/* checks input for anything besides digits
-   and if the number is in the range between 0 and max long */
+/* CHECK IF DIGITS AND RANGE */
 bool	check_input(char **argv)
 {
 	int	i;
@@ -16,26 +26,26 @@ bool	check_input(char **argv)
 		{
 			if (!(argv[k][i] >= '0' && argv[k][i] <= '9'))
 			{
-				printf("Please put only digits as Params. %i\n", argv[k][i]);
+				printf("ONLY DIGITS!%i\n", argv[k][i]);
 				return (false);
 			}
 			i++;
 		}
 		if (ft_atol(argv[k]) <= 0)
-			return (printf("Params has to between 0 and 100000000\n"), false);
+			return (printf("BETWEEN 0 AND 100000000!\n"), false);
 		i = 0;
 		k++;
 	}
 	return (true);
 }
-
+/* CREATE MUTEX FOR EVERY PHILO */
 void	create_data_mutex(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	data->forks = malloc(sizeof(pthread_mutex_t) * data->philo_amount + 1);
-	while (i < data->philo_amount)
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->nbr_philos + 1);
+	while (i < data->nbr_philos)
 	{
 		pthread_mutex_init(&data->forks[i], NULL);
 		i++;
@@ -44,17 +54,18 @@ void	create_data_mutex(t_data *data)
 	pthread_mutex_init(&data->print_mutex, NULL);
 }
 
+/* INITIALISE PHILO STRUCT */
 void	init_philo_structs(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	data->philo = malloc(sizeof(t_philo) * data->philo_amount + 1);
-	while (i < data->philo_amount)
+	data->philo = malloc(sizeof(t_philo) * data->nbr_philos + 1);
+	while (i < data->nbr_philos)
 	{
 		data->philo[i].meals_eaten = 0;
 		data->philo[i].id = i;
-		if (i + 1 == data->philo_amount)
+		if (i + 1 == data->nbr_philos)
 			data->philo[i].next_id = 0;
 		else
 			data->philo[i].next_id = i + 1;
@@ -65,17 +76,17 @@ void	init_philo_structs(t_data *data)
 	}
 }
 
-/*puts the argv arguments into the main data struct*/
+/* PUT ARGS IN DATA STRUCT */
 void	initalise_arguments(char **argv, t_data	*data)
 {
-	data->philo_amount = ft_atol(argv[1]);
+	data->nbr_philos = ft_atol(argv[1]);
 	data->time_to_die = ft_atol(argv[2]);
 	data->time_to_eat = ft_atol(argv[3]);
 	data->time_to_sleep = ft_atol(argv[4]);
 	data->all_alive = true;
-	data->print_protection = false;
+	data->print_lock = false;
 	if (argv[5])
-		data->meal_amount = ft_atol(argv[5]);
+		data->nbr_meals = ft_atol(argv[5]);
 	else
-		data->meal_amount = -1;
+		data->nbr_meals = -1;
 }
