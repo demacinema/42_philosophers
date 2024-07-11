@@ -6,7 +6,7 @@
 /*   By: demacinema <demacinema@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 14:49:42 by demacinema        #+#    #+#             */
-/*   Updated: 2024/07/12 01:20:13 by demacinema       ###   ########.fr       */
+/*   Updated: 2024/07/12 01:22:33 by demacinema       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # define BLUE "\e[38;5;104m"
 # define ORANGE "\e[38;5;220m"
 
-# define EAT " is eating.\e[0m\n"
-# define THINK " is thinking.\e[0m\n"
-# define SLEEP " starts sleeping.\e[0m\n"
-# define FORK " picks up a fork.\e[0m\n"
+# define EAT " EATING!!!\e[0m\n"
+# define THINK " THINKING!!!\e[0m\n"
+# define SLEEP " START SLEEP!!!\e[0m\n"
+# define FORK " GET FORK!!! \e[0m\n"
 # define DIE " DIED!!!\e[0m\n"
 
 struct	s_philo;
