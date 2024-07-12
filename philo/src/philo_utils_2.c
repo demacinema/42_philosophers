@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: demacinema <demacinema@student.42.fr>      +#+  +:+       +#+        */
+/*   By: demrodri <demrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 01:08:16 by demacinema        #+#    #+#             */
-/*   Updated: 2024/07/12 01:11:14 by demacinema       ###   ########.fr       */
+/*   Updated: 2024/07/12 02:05:32 by demrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ long long	get_curr_time(void)
 	milliseconds = (microseconds / 1000) + (seconds * 1000);
 	return (milliseconds);
 }
+
 /* CONVERT CHAR TO LONG */
 long	number_convert(int x, long nbr, const char *str)
 {
@@ -55,6 +56,7 @@ long	number_convert(int x, long nbr, const char *str)
 	else
 		return (0);
 }
+
 /* CONVERT STRING TO LONG */
 long	ft_atol(const char *str)
 {

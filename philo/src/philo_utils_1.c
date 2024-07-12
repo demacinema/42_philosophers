@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: demacinema <demacinema@student.42.fr>      +#+  +:+       +#+        */
+/*   By: demrodri <demrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 01:13:31 by demacinema        #+#    #+#             */
-/*   Updated: 2024/07/12 01:19:08 by demacinema       ###   ########.fr       */
+/*   Updated: 2024/07/12 02:58:20 by demrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	start_philo_threads(t_data *data)
 	data->start_time = get_curr_time();
 	while (i < data->nbr_philos)
 	{
-		if (pthread_create(&data->philo[i].thread, NULL, &philo_process, &data->philo[i]))
+		if (pthread_create(&data->philo[i].thread, \
+			NULL, &philo_process, &data->philo[i]))
 			return (perror("thread create fail"));
 		i++;
 	}
@@ -59,9 +60,9 @@ void	*philo_process(void *philo_arg)
 	{
 		pthread_mutex_unlock(&data->alive_mutex);
 		trying_to_eat(philo, data);
-		print_status(BLUE, SLEEP, data, philo);
+		print_status(GREY, SLEEP, data, philo);
 		ft_sleep(data->time_to_sleep);
-		print_status(ORANGE, THINK, data, philo);
+		print_status(BLUE, THINK, data, philo);
 		pthread_mutex_lock(&data->alive_mutex);
 	}
 	pthread_mutex_unlock(&data->alive_mutex);
@@ -72,9 +73,9 @@ void	*philo_process(void *philo_arg)
 void	trying_to_eat(t_philo *philo, t_data *data)
 {
 	pthread_mutex_lock(&data->forks[philo->id]);
-	print_status(GREEN, FORK, data, philo);
+	print_status(BROWN, FORK, data, philo);
 	pthread_mutex_lock(&data->forks[philo->next_id]);
-	print_status(GREEN, FORK, data, philo);
+	print_status(BROWN, FORK, data, philo);
 	print_status(RED, EAT, data, philo);
 	pthread_mutex_lock(&philo->last_meal_mutex);
 	philo->last_meal = get_curr_time();

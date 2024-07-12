@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: demacinema <demacinema@student.42.fr>      +#+  +:+       +#+        */
+/*   By: demrodri <demrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 00:43:06 by demacinema        #+#    #+#             */
-/*   Updated: 2024/07/12 01:12:00 by demacinema       ###   ########.fr       */
+/*   Updated: 2024/07/12 01:54:10 by demrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ bool	check_input(char **argv)
 	}
 	return (true);
 }
+
 /* CREATE MUTEX FOR EVERY PHILO */
 void	create_data_mutex(t_data *data)
 {
